@@ -1,16 +1,12 @@
 const fs = require('fs');
 const hogan = require('hogan.js');
 const nodemailer = require('nodemailer');
-//const sgMail = require('@sendgrid/mail');
+const sgMail = require('@sendgrid/mail');
 const bcrypt = require('bcrypt');
 const bitcore = require('bitcore-lib');
 const _ = require('lodash');
 const jwt = require('jsonwebtoken');
 const getUserId = require('../utils');
-
-const template =  fs.readFileSync('./views/email.hjs','utf-8');
-const compileTamplate =  hogan.compile(template);
-
 
 
 module.exports={
@@ -80,14 +76,14 @@ module.exports={
     
                 //Sending Verification Mail//
                 const code = await Math.random().toString().substring(2,9);
-                //sgMail.setApiKey(process.env.EMAIL_APIKEY);
+                sgMail.setApiKey(process.env.EMAIL_APIKEY);
                 
 
                     const msg={
                         to: user.email,
-                        from: 'support@koinboxx.co.uk',
-                        subject: 'verification code',
-                        html: compileTamplate.render({fullName:user.fullName,code})
+                        from: 'verification@elowa.com',
+                        subject: 'elowa verification code',
+                        html:`Hey, ${fullName} your elowa verification code is ${code}`
                     }
 
                    
