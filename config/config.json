@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "akon",
+    "password": "Akon10",
+    "database": "elobank",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "tokoyo",
+    "password": "Robinho10$#",
+    "database": "fox",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

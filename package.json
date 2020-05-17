@@ -1,0 +1,38 @@
+{
+  "name": "fox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.1.0",
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "bitcoin-transaction": "^1.2.1",
+    "bitcore-explorers": "^1.0.1",
+    "blockchain.info": "^2.12.1",
+    "config": "^3.3.1",
+    "dotenv": "^8.2.0",
+    "expo-server-sdk": "^3.5.0",
+    "express": "^4.17.1",
+    "graphql": "^15.0.0",
+    "graphql-yoga": "^1.18.3",
+    "hogan.js": "^3.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "merge-graphql-schemas": "^1.7.8",
+    "mysql2": "^2.1.0",
+    "nodemailer": "^6.4.6",
+    "sequelize": "^5.21.8",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
