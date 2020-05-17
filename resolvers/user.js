@@ -65,14 +65,15 @@ module.exports={
                 const address = await publicKey.toAddress().toString();
 
                 
-                user.email.toLowerCase();
+                user.email.toLowerCase().trim();
                 user.password = await bcrypt.hash(user.password,10);
                 const createUser = await models.Users.create(user);
 
-                const ptoken = await models.Notifications.findOne({where:{userId:createUser.userId}});
-                if(!ptoken){
-                    await models.Notifications.create({ushtoken:args.pushtoken,userId:createUser.userId});
-                }
+                 /*** Used for expo notification */
+                // const ptoken = await models.Notifications.findOne({where:{userId:createUser.userId}});
+                // if(!ptoken){
+                //     await models.Notifications.create({ushtoken:args.pushtoken,userId:createUser.userId});
+                // }
     
                 //Sending Verification Mail//
                 const code = await Math.random().toString().substring(2,9);
@@ -146,38 +147,24 @@ module.exports={
                 await models.Users.update({password:hashpassword,confirm:false},{where:{email}});
                 //send verification email
                 const code = await Math.random().toString().substring(2,7);
-                 //sgMail.setApiKey(process.env.EMAIL_APIKEY);
+                 sgMail.setApiKey(process.env.EMAIL_APIKEY);
                 
-                async function main(){
 
                     const msg={
                         to: user.email,
-                        from: 'support@koinboxx.co.uk',
-                        subject: 'verification code',
-                        html: compileTamplate.render({fullName:user.fullName,code})
+                        from: 'verification@elowa.com',
+                        subject: 'elowa verification code',
+                        html:`Hey, ${fullName} your elowa verification code is ${code}`
                     }
 
-                    const transport = nodemailer.createTransport({
-                        host:"mail.privateemail.com",
-                        port:465,
-                        auth:{
-                            user:"support@koinboxx.co.uk",
-                            pass:"Wani201910$#"
-                        }
-                    });
 
-                   await transport.sendMail(msg);
-
-                }
-
-                main().catch(console.error);
     
-                 /** await sgMail.send(msg,(err,res)=>{
+                  await sgMail.send(msg,(err,res)=>{
                     if(err){
                         throw new Error('Invalid verification email');
                     } 
                     
-                });*/
+                })
                 //save verification code
                 await models.Verification.create({vcode:code,userId:user.userId});
                 
@@ -213,39 +200,24 @@ module.exports={
                   const code = await Math.random().toString().substring(2,7);
                   const user = await context.models.Users.findOne({where:{userId}});
 
-                  //sgMail.setApiKey(process.env.EMAIL_APIKEY);
+                   sgMail.setApiKey(process.env.EMAIL_APIKEY);
                   
-                   
-                  async function main(){
 
                     const msg={
                         to: user.email,
-                        from: 'support@koinboxx.co.uk',
-                        subject: 'verification code',
-                        html: compileTamplate.render({fullName:user.fullName,code})
+                        from: 'verification@elowa.com',
+                        subject: 'elowa verification code',
+                        html:`Hey, ${fullName} your elowa verification code is ${code}`
                     }
 
-                    const transport = nodemailer.createTransport({
-                        host:"mail.privateemail.com",
-                        port:465,
-                        auth:{
-                            user:"support@koinboxx.co.uk",
-                            pass:"Wani201910$#"
-                        }
-                    });
 
-                   await transport.sendMail(msg);
-
-                }
-
-                main().catch(console.error);
       
-                  /** await sgMail.send(msg,(err,res)=>{
+                   await sgMail.send(msg,(err,res)=>{
                       if(err){
                           throw new Error('Invalid verification email');
                       } 
                       
-                  });*/
+                  });
 
                   //save varification code//
                   await context.models.Verification.create({vcode:code,userId});
