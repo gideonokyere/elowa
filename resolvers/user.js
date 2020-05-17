@@ -1,6 +1,3 @@
-const fs = require('fs');
-const hogan = require('hogan.js');
-const nodemailer = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
 const bcrypt = require('bcrypt');
 const bitcore = require('bitcore-lib');
