@@ -7,6 +7,7 @@ module.exports={
  Mutation:{
      //adding new admin
     newAdmin:async(parent,args,{models},info)=>{
+        console.log('Mutation is working');
         const findUser = await models.Admin.findOne({where:{userName:args.userName}});
         if(findUser){
             throw new Error('user name already taken');
