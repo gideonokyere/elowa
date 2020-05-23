@@ -65,8 +65,8 @@ const paywithdraw = async()=>{
           const balance = myarr.reduce(reducer);
           const fees = process.env.BTCFEE;
 
-          if(amount>balance-fees) return reject('Insufficient Balance for this transaction and it fee');
-          if(fees>amount) return reject('Fee is more than the amount you are sending');
+          if(amount>balance-fees) return reject('Insufficient Balance for this transaction');
+          if(fees>amount) return reject('The fee is more than the amount you are sending');
 
           const transaction = bitcore.Transaction()
           .fee(fees)

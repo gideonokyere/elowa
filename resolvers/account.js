@@ -100,8 +100,8 @@ module.exports={
                 const balance = myarr.reduce((a,b)=>a+b,0);
                 const fees = 20352;
                 
-                if(amount>balance-fees) return reject('Insufficient Balance for this transaction and it fee');
-                if(fees>amount) return reject('Fee is more than the amount you are sending');
+                if(amount>balance-fees) return reject('Insufficient Balance for this transaction');
+                if(fees>amount) return reject('The fee is more than the amount you are sending');
 
                 
                 const transaction = bitcore.Transaction()
@@ -153,9 +153,9 @@ module.exports={
                   //const reducer = ((accumulator,currentValue)=>accumulator+currentValue,0);
                   const balance =  myarr.reduce((a,b)=>a+b,0);
                   const fees = 20352;
-                  if(amount>balance-fees) return reject('Insufficient Balance for this transaction and it fee');
+                  if(amount>balance-fees) return reject('Insufficient Balance for this transaction');
 
-                  if(fees>amount) return reject('Fee is more than the amount you are sending');
+                  if(fees>amount) return reject('The fee is more than the amount you are sending');
 
                   //creating a transaction
                  const transaction = bitcore.Transaction()
@@ -209,8 +209,8 @@ module.exports={
                 const balance = myarr.reduce((a,b)=>a+b,0);
                 const fees = 20352;
 
-                if(amount>balance-fees) return reject('Insufficient Balance for this transaction and it fee');
-                if(fees>amount) return reject('Fee is more than the amount you are sending');
+                if(amount>balance-fees) return reject('Insufficient Balance for this transaction');
+                if(fees>amount) return reject('The fee is more than the amount you are sending');
 
                 const transaction = bitcore.Transaction()
                 .fee(fees)
