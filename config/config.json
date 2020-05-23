@@ -1,15 +1,15 @@
 {
   "development": {
-    "username": "akon",
-    "password": "Akon10",
-    "database": "elobank",
+    "username": "",
+    "password": "",
+    "database": "",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
-    "username": "tokoyo",
-    "password": "Robinho10$#",
-    "database": "fox",
+    "username": "",
+    "password": "",
+    "database": "",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
