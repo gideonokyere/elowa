@@ -1,7 +1,7 @@
 {
   "name": "elowa",
   "version": "1.0.0",
-  "description": "",
+  "description": "elowa is a btc wallet that allows you to send,receive and trade your bitcoin",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
